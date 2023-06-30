@@ -1,3 +1,4 @@
+import { Navbar } from "@/components/Navbar";
 import "./globals.css";
 import { Comfortaa } from "next/font/google";
 
@@ -15,7 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className={confortaa.className}>{children}</body>
+      <body className={confortaa.className}>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
