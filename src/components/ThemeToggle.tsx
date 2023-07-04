@@ -1,39 +1,11 @@
-'use client'
 import { DarkModeToggle } from '@anatoliygatt/dark-mode-toggle'
-import { useEffect, useState } from 'react'
 
-export const ThemeToggle = () => {
-    const [theme, setTheme] = useState<'dark' | 'light'>(
-        localStorage.getItem('color-theme') === 'light' ? 'light' : 'dark'
-    )
+export interface IThemeToggleProps {
+    theme: 'dark' | 'light'
+    handleClick(theme: 'dark' | 'light'): void
+}
 
-    useEffect(() => {
-        if (localStorage.getItem('color-theme') === 'light') {
-            document.documentElement.classList.remove('dark')
-        } else {
-            document.documentElement.classList.add('dark')
-        }
-    }, [])
-
-    function toggleTheme() {
-        if (localStorage.getItem('color-theme')) {
-            if (localStorage.getItem('color-theme') === 'light') {
-                document.documentElement.classList.add('dark')
-                localStorage.setItem('color-theme', 'dark')
-            } else {
-                document.documentElement.classList.remove('dark')
-                localStorage.setItem('color-theme', 'light')
-            }
-        } else {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark')
-                localStorage.setItem('color-theme', 'light')
-            } else {
-                document.documentElement.classList.add('dark')
-                localStorage.setItem('color-theme', 'dark')
-            }
-        }
-    }
+export const ThemeToggle = ({ theme, handleClick }: IThemeToggleProps) => {
     return (
         <DarkModeToggle
             mode={theme}
@@ -47,8 +19,7 @@ export const ThemeToggle = () => {
             inactiveThumbColor='#1B1A1D'
             activeThumbColor='#f5f5f5'
             onChange={mode => {
-                setTheme(mode)
-                toggleTheme()
+                handleClick(mode)
             }}
         />
     )

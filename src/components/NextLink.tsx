@@ -12,7 +12,7 @@ export const NextLink = ({ href, children }: INextLinkProps) => {
     return (
         <Link
             href={href}
-            className={`px-3 py-2 rounded-lg ${
+            className={`px-3 py-2 rounded-lg w-full text-center ${
                 pathname === href &&
                 'bg-primary-light dark:bg-primary-dark text-white'
             }`}>

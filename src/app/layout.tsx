@@ -1,3 +1,4 @@
+import { Header } from '@/components/layout/Header'
 import './globals.css'
 import { Comfortaa } from 'next/font/google'
 
@@ -15,7 +16,11 @@ export default function RootLayout({
 }) {
     return (
         <html lang='pt-br'>
-            <body className={confortaa.className}>{children}</body>
+            <body
+                className={`${confortaa.className} bg-white dark:bg-dark-gray`}>
+                <Header />
+                {children}
+            </body>
         </html>
     )
 }

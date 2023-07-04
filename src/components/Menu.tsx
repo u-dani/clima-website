@@ -5,12 +5,13 @@ import { NextLink } from './NextLink'
 import { ScaleTemperatureForm } from './form/ScaleTemperatureForm'
 import { ThemeToggle } from './ThemeToggle'
 import { useState } from 'react'
+import { IThemeToggleProps } from './ThemeToggle'
 
-export const Menu = () => {
+export const Menu = (themeToggleProps: IThemeToggleProps) => {
     const [showMenu, setShowMenu] = useState(false)
 
     return (
-        <div className='text-secondary-light text-base'>
+        <div className='text-secondary-light text-base cursor-pointer'>
             <MdMenuOpen
                 className='text-3xl text-medium-gray hover:text-primary-light dark:text-secondary-light dark:hover:text-primary-dark'
                 onClick={() => {
@@ -19,17 +20,17 @@ export const Menu = () => {
             />
 
             {showMenu && (
-                <div className='absolute top-0 left-0 bg-dark-gray w-screen h-screen p-4'>
-                    <div className='flex justify-end'>
+                <div className='absolute top-0 left-0 bg-dark-gray w-screen h-screen p-4 flex flex-col items-center'>
+                    <div className='flex self-end'>
                         <MdClose
-                            className='text-3xl  hover:text-primary-light dark:hover:text-primary-dark'
+                            className='text-3xl hover:text-primary-light dark:hover:text-primary-dark'
                             onClick={() => {
                                 setShowMenu(false)
                             }}
                         />
                     </div>
 
-                    <div className='p-4 flex flex-col items-center gap-4 mt-8'>
+                    <div className='p-4 flex flex-col items-center gap-4 mt-8 min-w-[320px]'>
                         <div className='p-4 border-b border-light-gray w-full text-center'>
                             <h3>Menu</h3>
                         </div>
@@ -41,14 +42,14 @@ export const Menu = () => {
                         </NextLink>
                     </div>
 
-                    <div className='p-4 flex flex-col items-center gap-4 mt-16'>
+                    <div className='min-w-[320px] p-4 flex flex-col items-center gap-4 mt-16'>
                         <div className='p-4 border-b border-light-gray w-full text-center'>
                             <h3>Outras opções</h3>
                         </div>
 
                         <div className='flex justify-between w-full p-2'>
                             <ScaleTemperatureForm />
-                            <ThemeToggle />
+                            <ThemeToggle {...themeToggleProps} />
                         </div>
                     </div>
                 </div>
