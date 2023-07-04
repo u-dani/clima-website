@@ -35,9 +35,13 @@ export const Menu = (themeToggleProps: IThemeToggleProps) => {
                             <h3>Menu</h3>
                         </div>
 
-                        <NextLink href='/current'>Clima Atual</NextLink>
-                        <NextLink href='/forecast'>Próximos Dias</NextLink>
-                        <NextLink href='/interval'>
+                        <NextLink href='/current' className='w-full'>
+                            Clima Atual
+                        </NextLink>
+                        <NextLink href='/forecast' className='w-full'>
+                            Próximos Dias
+                        </NextLink>
+                        <NextLink href='/interval' className='w-full'>
                             Intervalo de 3 horas
                         </NextLink>
                     </div>
