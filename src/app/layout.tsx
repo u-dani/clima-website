@@ -20,7 +20,9 @@ export default function RootLayout({
             <body
                 className={`${confortaa.className} bg-white dark:bg-dark-gray flex flex-col gap-8`}>
                 <Header />
-                <Navbar />
+                <div className='px-8 max-sm:hidden'>
+                    <Navbar />
+                </div>
                 {children}
             </body>
         </html>
