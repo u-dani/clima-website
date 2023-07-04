@@ -1,6 +1,7 @@
 import { Header } from '@/components/layout/Header'
 import './globals.css'
 import { Comfortaa } from 'next/font/google'
+import { Navbar } from '@/components/Navbar'
 
 const confortaa = Comfortaa({ subsets: ['latin'] })
 
@@ -17,8 +18,9 @@ export default function RootLayout({
     return (
         <html lang='pt-br'>
             <body
-                className={`${confortaa.className} bg-white dark:bg-dark-gray`}>
+                className={`${confortaa.className} bg-white dark:bg-dark-gray flex flex-col gap-8`}>
                 <Header />
+                <Navbar />
                 {children}
             </body>
         </html>
