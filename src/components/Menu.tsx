@@ -20,7 +20,7 @@ export const Menu = (themeToggleProps: IThemeToggleProps) => {
             />
 
             {showMenu && (
-                <div className='absolute top-0 left-0 bg-dark-gray w-screen h-screen p-4 flex flex-col items-center'>
+                <div className='absolute top-0 left-0 bg-dark-gray w-screen h-screen p-4 flex flex-col items-center z-50'>
                     <div className='flex self-end'>
                         <MdClose
                             className='text-3xl hover:text-primary-light dark:hover:text-primary-dark'

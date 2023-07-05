@@ -3,9 +3,8 @@ import { SyntheticEvent } from 'react'
 import { usePathname } from 'next/navigation'
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
-import { CelsiusIcon } from '../CelsiusIcon'
-import { FahrenheitIcon } from '../FahrenheitIcon'
-
+import { CelsiusIcon } from '../icons/CelsiusIcon'
+import { FahrenheitIcon } from '../icons/FahrenheitIcon'
 export const ScaleTemperatureForm = () => {
     const { push } = useRouter()
     const pathname = usePathname()
