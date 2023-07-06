@@ -32,7 +32,7 @@ export const ScaleTemperatureForm = () => {
             <label
                 htmlFor='celsius'
                 className={`${style} ${
-                    unit === 'metric'
+                    unit === 'metric' || unit === null
                         ? `${checkedLightThemeStyle} ${checkedDarkThemeStyle}`
                         : `${defaultLightThemeStyle} ${defaultDarkThemeStyle}`
                 }`}>

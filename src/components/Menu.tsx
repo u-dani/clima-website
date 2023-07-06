@@ -1,13 +1,16 @@
 'use client'
+import { useState } from 'react'
+import { NextLink } from './NextLink'
+import { useSearchParams } from 'next/navigation'
+
+import { ScaleTemperatureForm } from './form/ScaleTemperatureForm'
 import { MdMenuOpen } from 'react-icons/md'
 import { MdClose } from 'react-icons/md'
-import { NextLink } from './NextLink'
-import { ScaleTemperatureForm } from './form/ScaleTemperatureForm'
 import { ThemeToggle } from './ThemeToggle'
-import { useState } from 'react'
 import { IThemeToggleProps } from './ThemeToggle'
 
 export const Menu = (themeToggleProps: IThemeToggleProps) => {
+    const searchParams = useSearchParams()
     const [showMenu, setShowMenu] = useState(false)
 
     return (
@@ -35,16 +38,21 @@ export const Menu = (themeToggleProps: IThemeToggleProps) => {
                             <h3>Menu</h3>
                         </div>
 
-                        <NextLink href='/current' className='w-full text-white'>
+                        <NextLink
+                            path='/current'
+                            href={`/current?${searchParams.toString()}`}
+                            className='w-full text-white'>
                             Clima Atual
                         </NextLink>
                         <NextLink
-                            href='/forecast'
+                            path='/forecast'
+                            href={`/forecast?${searchParams.toString()}`}
                             className='w-full text-white'>
                             Próximos Dias
                         </NextLink>
                         <NextLink
-                            href='/interval'
+                            path='/interval'
+                            href={`/interval?${searchParams.toString()}`}
                             className='w-full text-white'>
                             Intervalo de 3 horas
                         </NextLink>
