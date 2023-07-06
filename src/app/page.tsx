@@ -47,6 +47,7 @@ export default function Home() {
                 push(`current?`)
             }
         )
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
         <main className='bg-dark-gray w-screen h-screen flex flex-col justify-center items-center text-white gap-4 text-center'>

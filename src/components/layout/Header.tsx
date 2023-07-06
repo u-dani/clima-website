@@ -7,20 +7,20 @@ import { ScaleTemperatureForm } from '../form/ScaleTemperatureForm'
 import { SearchInput } from '../form/SearchInput'
 
 export const Header = () => {
-    const [theme, setTheme] = useState<'dark' | 'light'>(
-        localStorage.getItem('color-theme') === 'light' ? 'light' : 'dark'
-    )
+    const [theme, setTheme] = useState<'light' | 'dark'>()
 
     useEffect(() => {
         if (localStorage.getItem('color-theme') === 'light') {
+            setTheme('light')
             document.documentElement.classList.remove('dark')
         } else {
+            setTheme('dark')
             document.documentElement.classList.add('dark')
         }
     }, [])
 
     function toggleTheme(theme: 'dark' | 'light') {
-        localStorage.setItem('color-theme', theme)
+        localStorage?.setItem('color-theme', theme)
         setTheme(theme)
 
         theme === 'light'

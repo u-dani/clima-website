@@ -1,7 +1,7 @@
 import { DarkModeToggle } from '@anatoliygatt/dark-mode-toggle'
 
 export interface IThemeToggleProps {
-    theme: 'dark' | 'light'
+    theme: 'dark' | 'light' | undefined
     handleClick(theme: 'dark' | 'light'): void
 }
 
