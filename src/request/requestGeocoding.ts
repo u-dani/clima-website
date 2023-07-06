@@ -19,5 +19,9 @@ export const requestGeocoding = async ({
     )
 
     const data = await res.json()
+    if (data[0].state === 'Federal District') {
+        data[0].state = 'Distrito Federal'
+    }
+
     return data[0]
 }

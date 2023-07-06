@@ -1,25 +1,26 @@
 import { requestGeocoding } from '@/request/requestGeocoding'
 import { requestCurrentWeather } from '@/request/requestCurrentWeather'
+
 import { WeatherSummaryCard } from '@/components/cards/WeatherSummaryCard'
+import { Card } from '@/components/cards/Card'
 
 import { WindIcon } from '@/components/icons/WindIcon'
 import { MdWaterDrop } from 'react-icons/md'
-import { WiWindDeg } from 'react-icons/wi'
-
 import { LiaLocationArrowSolid } from 'react-icons/lia'
-
-import { SunIcon } from '@/components/icons/SunIcon'
-import { Card } from '@/components/cards/Card'
-
 import { HotThermometerIcon } from '@/components/icons/HotThermometerIcon'
 import { ColdThermometerIcon } from '@/components/icons/ColdThermometerIcon'
 import { DoubleCloudIcon } from '@/components/icons/DoubleCloudIcon'
-
 import { SunriseIcon } from '@/components/icons/SunriseIcon'
 import { SunsetIcon } from '@/components/icons/SunsetIcon'
 
-export default async function CurrentWeatherPage() {
-    const geocodingData = await requestGeocoding({ city: 'Salgueiro' })
+export default async function CurrentWeatherPage({
+    searchParams,
+}: {
+    searchParams: { city: string; unit: string }
+}) {
+    const geocodingData = await requestGeocoding({
+        city: searchParams.city || 'Brasília',
+    })
     const weatherData = await requestCurrentWeather({
         lat: geocodingData.lat,
         lon: geocodingData.lon,
@@ -62,17 +63,23 @@ export default async function CurrentWeatherPage() {
     }
 
     return (
-        <main>
-            <WeatherSummaryCard
-                city={geocodingData.name}
-                state={geocodingData.state}
-                description={weatherData.weather[0].description}
-                iconCode={weatherData.weather[0].icon}
-                temperature={weatherData.main.temp}
-            />
+        <main className='flex flex-col gap-6 mb-6 lg:flex-row lg:gap-8'>
+            <div className='lg:w-1/4'>
+                <WeatherSummaryCard
+                    city={geocodingData.name}
+                    state={geocodingData.state}
+                    description={weatherData.weather[0].description}
+                    iconCode={weatherData.weather[0].icon}
+                    temperature={
+                        searchParams.unit === 'imperial'
+                            ? weatherData.main.temp * 1.8 + 32
+                            : weatherData.main.temp
+                    }
+                />
+            </div>
 
-            <div className='flex gap-6 flex-wrap'>
-                <Card className='flex w-full gap-6 justify-between items-center sm:w-max'>
+            <div className='grid auto-rows-fr gap-4 sm:grid-cols-2 md:grid-cols-3 lg:w-3/4'>
+                <Card className='flex h-full w-full gap-6 justify-between items-center'>
                     <div className='flex  flex-col gap-3'>
                         <span>Umidade</span>
                         <div className='text-4xl font-medium'>
@@ -89,13 +96,22 @@ export default async function CurrentWeatherPage() {
                     <MdWaterDrop className='text-5xl text-primary-light dark:text-primary-dark' />
                 </Card>
 
-                <Card className='flex w-full gap-6 justify-between items-center sm:w-max'>
+                <Card className='flex h-full w-full gap-6 justify-between items-center'>
                     <div className='flex  flex-col gap-3'>
                         <span>Sensação térmica</span>
                         <div className='text-4xl font-medium'>
-                            <span>
-                                {Math.round(weatherData.main.feels_like)}°
-                            </span>
+                            {searchParams.unit === 'imperial' ? (
+                                <span>
+                                    {Math.floor(
+                                        weatherData.main.feels_like * 1.8 + 32
+                                    )}
+                                    °
+                                </span>
+                            ) : (
+                                <span>
+                                    {Math.floor(weatherData.main.feels_like)}°
+                                </span>
+                            )}
                         </div>
                         <span className='text-sm'>
                             {weatherData.main.temp > 20 &&
@@ -115,7 +131,7 @@ export default async function CurrentWeatherPage() {
                     </div>
                 </Card>
 
-                <Card className='flex w-full gap-6 justify-between items-center sm:w-max text-center'>
+                <Card className='flex h-full w-full gap-6 justify-between items-center'>
                     <div className='flex  flex-col gap-3'>
                         <span>Visibilidade</span>
                         <div className='text-4xl font-medium'>
@@ -125,7 +141,7 @@ export default async function CurrentWeatherPage() {
                     </div>
                 </Card>
 
-                <Card className='flex w-full gap-6 justify-between items-center sm:w-max'>
+                <Card className='flex h-full w-full gap-6 justify-between items-center'>
                     <div className='flex  flex-col gap-3'>
                         <span>Ventos</span>
                         <div className='text-4xl font-medium'>
@@ -149,7 +165,7 @@ export default async function CurrentWeatherPage() {
                     </div>
                 </Card>
 
-                <Card className='flex w-full gap-6 justify-between items-center sm:w-max'>
+                <Card className='flex h-full w-full gap-6 justify-between items-center'>
                     <div className='flex  flex-col gap-3'>
                         <span>Nebulosidade</span>
                         <div className='text-4xl font-medium'>
@@ -164,7 +180,7 @@ export default async function CurrentWeatherPage() {
                     </div>
                 </Card>
 
-                <Card className='flex w-full gap-6 justify-between items-center sm:w-max'>
+                <Card className='flex h-full w-full gap-6 justify-between items-center'>
                     <div className='flex flex-col gap-3'>
                         <span>Nascer e pôr do sol</span>
                         <div className='flex gap-2 text-xl font-medium'>
@@ -195,7 +211,7 @@ export default async function CurrentWeatherPage() {
                     </div>
                 </Card>
 
-                <Card className='flex w-full gap-6 justify-center items-center sm:w-max text-center'>
+                <Card className='flex h-full w-full gap-6 items-center'>
                     <div className='flex flex-col gap-3'>
                         <span>Pressão atmosférica</span>
                         <div className='text-4xl font-medium'>

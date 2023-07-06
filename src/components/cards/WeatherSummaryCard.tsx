@@ -166,7 +166,16 @@ export const WeatherSummaryCard = ({
 
             <div className='flex flex-col gap-6 sm:flex-row sm:justify-between w-full lg:flex-col justify-between h-full lg:gap-10'>
                 <span className='text-base lg:text-lg max-lg:hidden'>
-                    {`${city}, ${state.substring(0, 2).toUpperCase()}`}
+                    {`${city}, `}
+                    {state.split(' ').length > 1 ? (
+                        <span className='uppercase'>
+                            {`${state.split(' ')[0][0]}${
+                                state.split(' ')[1][0]
+                            }`}
+                        </span>
+                    ) : (
+                        state.substring(0, 2).toUpperCase()
+                    )}
                 </span>
 
                 <div className='flex flex-col gap-6'>
@@ -180,7 +189,7 @@ export const WeatherSummaryCard = ({
                         </div>
 
                         <span className='text-4xl font-bold lg:text-6xl'>
-                            {Math.round(temperature)}º
+                            {Math.floor(temperature)}º
                         </span>
 
                         <span className='text-base lg:text-lg'>
