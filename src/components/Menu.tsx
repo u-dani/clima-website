@@ -38,24 +38,44 @@ export const Menu = (themeToggleProps: IThemeToggleProps) => {
                             <h3>Menu</h3>
                         </div>
 
-                        <NextLink
-                            path='/current'
-                            href={`/current?${searchParams.toString()}`}
-                            className='w-full text-white'>
-                            Clima Atual
-                        </NextLink>
-                        <NextLink
-                            path='/forecast'
-                            href={`/forecast?${searchParams.toString()}`}
-                            className='w-full text-white'>
-                            Próximos Dias
-                        </NextLink>
-                        <NextLink
-                            path='/interval'
-                            href={`/interval?${searchParams.toString()}`}
-                            className='w-full text-white'>
-                            Intervalo de 3 horas
-                        </NextLink>
+                        <div
+                            className='w-full flex'
+                            onClick={() => {
+                                setShowMenu(false)
+                            }}>
+                            <NextLink
+                                path='/current'
+                                href={`/current?${searchParams.toString()}`}
+                                className='w-full text-white'>
+                                Clima Atual
+                            </NextLink>
+                        </div>
+
+                        <div
+                            className='w-full flex'
+                            onClick={() => {
+                                setShowMenu(false)
+                            }}>
+                            <NextLink
+                                path='/forecast'
+                                href={`/forecast?${searchParams.toString()}`}
+                                className='w-full text-white'>
+                                Próximos Dias
+                            </NextLink>
+                        </div>
+
+                        <div
+                            className='w-full flex'
+                            onClick={() => {
+                                setShowMenu(false)
+                            }}>
+                            <NextLink
+                                path='/interval'
+                                href={`/interval?${searchParams.toString()}`}
+                                className='w-full text-white'>
+                                Intervalo de 3 horas
+                            </NextLink>
+                        </div>
                     </div>
 
                     <div className='min-w-[320px] p-4 flex flex-col items-center gap-4 mt-16'>

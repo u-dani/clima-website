@@ -46,12 +46,12 @@ const ICONCODES: {
     }
 } = {
     '01d': {
-        title: 'Céu Limpo',
+        title: 'Limpo',
         image: clearSkyDay,
         icon: <SunIcon />,
     },
     '01n': {
-        title: 'Céu Limpo',
+        title: 'Limpo',
         image: clearSkyNight,
         icon: <ClearNightIcon />,
     },
