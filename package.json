@@ -18,6 +18,7 @@
     "autoprefixer": "10.4.14",
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.7",
+    "eslint-plugin-react-hooks": "^5.0.0-canary-e91142dd6-20230705",
     "next": "13.4.7",
     "postcss": "8.4.24",
     "react": "18.2.0",

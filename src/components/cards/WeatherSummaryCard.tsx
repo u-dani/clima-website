@@ -159,12 +159,11 @@ export const WeatherSummaryCard = ({
                 alt={ICONCODES[iconCode].title}
                 fill
                 style={{ objectFit: 'cover' }}
-                className='-z-50'
             />
 
-            <span className='absolute top-0 left-0 bg-black w-screen h-screen opacity-40 -z-50'></span>
+            <span className='absolute top-0 left-0 bg-black w-screen h-screen opacity-40'></span>
 
-            <div className='flex flex-col gap-6 sm:flex-row sm:justify-between w-full lg:flex-col justify-between h-full lg:gap-10'>
+            <div className='flex flex-col gap-6 sm:flex-row sm:justify-between w-full lg:flex-col justify-between h-full lg:gap-10 z-30'>
                 <span className='text-base lg:text-lg max-lg:hidden'>
                     {`${city}, `}
                     {state.split(' ').length > 1 ? (
