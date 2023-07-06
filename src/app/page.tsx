@@ -3,7 +3,6 @@ import Image, { StaticImageData } from 'next/image'
 import { useRouter } from 'next/navigation'
 import { requestCityName } from '@/request/requestCityName'
 import { useEffect, useState } from 'react'
-import { LoadingSpinner } from '@/components/loading/LoadingSpinner'
 
 import catPlease from 'public/cats/cat-please.gif'
 import catHappy from 'public/cats/cat-happy.gif'
