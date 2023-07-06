@@ -23,5 +23,9 @@ export const requestGeocoding = async ({
         data[0].state = 'Distrito Federal'
     }
 
+    if (data[0].state === 'Rio de Janeiro') {
+        data[0].state = 'Rio Janeiro'
+    }
+
     return data[0]
 }
