@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation'
 
 interface INextLinkProps {
     href: string
-    path: string
+    path?: string
     children: React.ReactNode
     className?: string
 }

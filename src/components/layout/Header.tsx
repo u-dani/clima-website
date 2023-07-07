@@ -29,7 +29,7 @@ export const Header = () => {
     }
 
     return (
-        <header className='flex justify-between items-center gap-4 p-4 md:px-8 md:py-6 sm:gap-8 border-b border-neutral-200'>
+        <header className='flex justify-between items-center gap-4 p-4 md:px-8 md:py-6 sm:gap-8 border-b border-neutral-200 dark:border-neutral-600'>
             <Logo />
             <div className='w-full max-w-[500px]'>
                 <SearchInput

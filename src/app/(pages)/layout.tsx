@@ -1,3 +1,4 @@
+import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 import { Navbar } from '@/components/Navbar'
 
@@ -14,6 +15,7 @@ export default function RootLayout({
                 <Navbar />
             </div>
             <main className='px-4 md:px-8'>{children}</main>
+            <Footer />
         </div>
     )
 }
