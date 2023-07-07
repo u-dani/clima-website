@@ -21,7 +21,8 @@ export const ScaleTemperatureForm = () => {
         push(`${pathname}?${params}&unit=${unit}`)
     }
 
-    const style = 'rounded-full flex justify-center items-center w-9 h-9'
+    const style =
+        'rounded-full flex justify-center items-center w-9 h-9 cursor-pointer'
     const defaultLightThemeStyle = 'bg-secondary-light text-medium-gray'
     const checkedLightThemeStyle = 'bg-primary-light text-white'
     const defaultDarkThemeStyle = 'dark:bg-secondary-dark dark:text-light-gray'
