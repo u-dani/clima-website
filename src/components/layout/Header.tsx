@@ -4,11 +4,20 @@ import { Logo } from '../Logo'
 import { Menu } from '../Menu'
 import { ThemeToggle } from '../ThemeToggle'
 import { ScaleTemperatureForm } from '../form/ScaleTemperatureForm'
-import { SearchInput } from '../form/SearchInput'
 import { SearchForm } from '../form/SearchForm'
+import { usePathname } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 export const Header = () => {
     const [theme, setTheme] = useState<'light' | 'dark'>()
+
+    const { push } = useRouter()
+    const pathname = usePathname()
+    const searchParams = useSearchParams()
+    const urlSearchParams = new URLSearchParams(searchParams.toString())
+    urlSearchParams.delete('city')
+    const newParams = urlSearchParams.toString()
 
     function toggleTheme(theme: 'dark' | 'light') {
         localStorage?.setItem('color-theme', theme)
@@ -23,7 +32,9 @@ export const Header = () => {
         valueInput,
     }: {
         valueInput: string | undefined
-    }) {}
+    }) {
+        push(`${pathname}?city=${valueInput}&${newParams}`)
+    }
 
     useEffect(() => {
         if (localStorage.getItem('color-theme') === 'light') {

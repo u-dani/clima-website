@@ -13,19 +13,30 @@ export interface IGeocodingRequestResponse {
 
 export const requestGeocoding = async ({
     city,
-}: IGeocodingRequestParameters): Promise<IGeocodingRequestResponse> => {
+}: IGeocodingRequestParameters): Promise<
+    IGeocodingRequestResponse | undefined
+> => {
     const res = await fetch(
         `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${APIKEY}`
     )
 
     const data = await res.json()
-    if (data[0].state === 'Federal District') {
-        data[0].state = 'Distrito Federal'
+
+    console.log(city)
+    console.log(res)
+    console.log(data)
+
+    if (data[0] === undefined) {
+        return undefined
     }
 
-    if (data[0].state === 'Rio de Janeiro') {
-        data[0].state = 'Rio Janeiro'
-    }
+    // if (data[0].state === 'Federal District') {
+    //     data[0].state = 'Distrito Federal'
+    // }
+
+    // else if (data[0].state === 'Rio de Janeiro') {
+    //     data[0].state = 'Rio Janeiro'
+    // }
 
     return data[0]
 }
