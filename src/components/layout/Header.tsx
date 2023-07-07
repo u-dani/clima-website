@@ -5,9 +5,25 @@ import { Menu } from '../Menu'
 import { ThemeToggle } from '../ThemeToggle'
 import { ScaleTemperatureForm } from '../form/ScaleTemperatureForm'
 import { SearchInput } from '../form/SearchInput'
+import { SearchForm } from '../form/SearchForm'
 
 export const Header = () => {
     const [theme, setTheme] = useState<'light' | 'dark'>()
+
+    function toggleTheme(theme: 'dark' | 'light') {
+        localStorage?.setItem('color-theme', theme)
+        setTheme(theme)
+
+        theme === 'light'
+            ? document.documentElement.classList.remove('dark')
+            : document.documentElement.classList.add('dark')
+    }
+
+    function handleSubmitSearchForm({
+        valueInput,
+    }: {
+        valueInput: string | undefined
+    }) {}
 
     useEffect(() => {
         if (localStorage.getItem('color-theme') === 'light') {
@@ -19,23 +35,11 @@ export const Header = () => {
         }
     }, [])
 
-    function toggleTheme(theme: 'dark' | 'light') {
-        localStorage?.setItem('color-theme', theme)
-        setTheme(theme)
-
-        theme === 'light'
-            ? document.documentElement.classList.remove('dark')
-            : document.documentElement.classList.add('dark')
-    }
-
     return (
         <header className='flex justify-between items-center gap-4 p-4 md:px-8 md:py-6 sm:gap-8 border-b border-neutral-200 dark:border-neutral-600'>
             <Logo />
             <div className='w-full max-w-[500px]'>
-                <SearchInput
-                    id='city-name'
-                    placeholder='Digite o nome da sua cidade'
-                />
+                <SearchForm handleSubmit={handleSubmitSearchForm} />
             </div>
             <div className='max-sm:hidden'>
                 <ScaleTemperatureForm />
