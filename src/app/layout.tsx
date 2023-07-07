@@ -1,9 +1,4 @@
-import { Header } from '@/components/layout/Header'
 import './globals.css'
-import { Comfortaa } from 'next/font/google'
-import { Navbar } from '@/components/Navbar'
-
-const confortaa = Comfortaa({ subsets: ['latin'] })
 
 export const metadata = {
     title: 'Clima',
@@ -17,6 +12,11 @@ export default function RootLayout({
 }) {
     return (
         <html lang='pt-br'>
+            <head>
+                <meta
+                    httpEquiv='Content-Security-Policy'
+                    content='upgrade-insecure-requests'></meta>
+            </head>
             <body>{children}</body>
         </html>
     )

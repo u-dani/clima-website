@@ -22,10 +22,6 @@ export const requestGeocoding = async ({
 
     const data = await res.json()
 
-    console.log(city)
-    console.log(res)
-    console.log(data)
-
     if (data[0] === undefined) {
         return undefined
     }

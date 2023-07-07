@@ -56,22 +56,22 @@ const ICONCODES: {
         icon: <ClearNightIcon />,
     },
     '02d': {
-        title: 'Poucas nuvens',
+        title: 'Nuvens',
         image: fewCloudsDay,
         icon: <PartlyCloudDayIcon />,
     },
     '02n': {
-        title: 'Poucas nuvens',
+        title: 'Nuvens',
         image: fewCloudsNight,
         icon: <PartlyCloudNightIcon />,
     },
     '03d': {
-        title: 'Nuvens dispersas',
+        title: 'Nuvens',
         image: scatteredCloudsDay,
         icon: <CloudIcon />,
     },
     '03n': {
-        title: 'Nuvens dispersas',
+        title: 'Nuvens',
         image: scatteredCloudsNight,
         icon: <CloudIcon />,
     },

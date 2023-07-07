@@ -8,8 +8,7 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <div
-            className={`bg-white dark:bg-dark-gray text-medium-gray dark:text-secondary-light flex flex-col gap-8`}>
+        <div className='bg-white dark:bg-dark-gray text-medium-gray dark:text-secondary-light flex flex-col gap-8'>
             <Header />
             <div className='px-8 max-sm:hidden'>
                 <Navbar />

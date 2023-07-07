@@ -5,13 +5,13 @@ interface ISearchFormProps {
 }
 
 export const SearchForm = ({ handleSubmit }: ISearchFormProps) => {
-    const input = document.querySelector('input')
-
     return (
         <form
             onSubmit={e => {
                 e.preventDefault()
-                handleSubmit({ valueInput: input?.value })
+                handleSubmit({
+                    valueInput: document.querySelector('input')?.value,
+                })
             }}>
             <SearchInput
                 id='city-name'
