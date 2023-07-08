@@ -210,7 +210,7 @@ export default async function CurrentWeatherPage({
                                     <span>
                                         {new Date(
                                             weatherData.sys.sunrise * 1000
-                                        ).toLocaleTimeString([], {
+                                        ).toLocaleTimeString('pt-BR', {
                                             timeStyle: 'short',
                                         })}
                                     </span>
@@ -223,7 +223,7 @@ export default async function CurrentWeatherPage({
                                     <span>
                                         {new Date(
                                             weatherData.sys.sunset * 1000
-                                        ).toLocaleTimeString([], {
+                                        ).toLocaleTimeString('pt-BR', {
                                             timeStyle: 'short',
                                         })}
                                     </span>

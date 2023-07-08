@@ -28,7 +28,7 @@ import { ThunderIcon } from '@/components/icons/ThunderIcon'
 import { SnowIcon } from '@/components/icons/SnowIcon'
 import { HazzyIcon } from '@/components/icons/HazzyIcon'
 
-const DAYS = [
+export const DAYS = [
     'Domingo',
     'Segunda',
     'Terça',
@@ -38,7 +38,7 @@ const DAYS = [
     'Sábado',
 ]
 
-const ICONCODES: {
+export const ICONCODES: {
     [key: string]: {
         title: string
         image: StaticImageData
@@ -193,7 +193,7 @@ export const WeatherSummaryCard = ({
 
                         <span className='text-base lg:text-lg'>
                             {DAYS[new Date().getDay()]},{`${' '}`}
-                            {new Date().toLocaleTimeString([], {
+                            {new Date().toLocaleTimeString('pt-BR', {
                                 timeStyle: 'short',
                             })}
                         </span>
