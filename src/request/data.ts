@@ -18,7 +18,6 @@ export interface IWeatherDataResponse {
         temp_max: number
         temp_min: number
     }
-    name: string
     sys: {
         sunrise: number
         sunset: number
