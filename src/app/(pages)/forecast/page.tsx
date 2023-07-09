@@ -19,46 +19,63 @@ export default async function WeatherForecastPage({
           })
         : undefined
 
-    // reduce, encaixa PERFEITAMENTE NO REDUCE, QUE DROGA :d
+    const weatherDataList: (typeof weatherData)[] = []
+    let arr: typeof weatherData = []
+    weatherData?.forEach((data, index) => {
+        const dataDate = new Date(data.dt * 1000).toLocaleDateString()
+        const arrDate =
+            arr?.length !== 0 && arr
+                ? new Date(arr[0].dt * 1000).toLocaleDateString()
+                : undefined
 
-    function concat() {
-        let weatherDataList
-        weatherData?.forEach(data => {
-            const date = new Date(data.dt * 1000).toLocaleDateString()
-        })
+        if (dataDate === new Date().toLocaleDateString()) {
+            return
+        } else if (arrDate === undefined || arrDate === dataDate) {
+            arr?.push(data)
+            return
+        }
 
-        console.log(weatherDataList)
-    }
+        weatherDataList.push(arr)
+        arr = []
+    })
+    weatherDataList.push(arr)
+
+    // // const arr = [1, 2, 2, 3, 3, 4, 4, 4, 4]
+    // const occurrences = arr.reduce((acc, curr) => {
+    //     return acc[curr] ? ++acc[curr] : (acc[curr] = 1), acc
+    // }, {})
+    // console.log(occurrences) // {1: 1, 2: 2, 3: 2, 4: 4}
+
+    const icons = weatherDataList.map(arr =>
+        arr?.map(data => data.weather[0].icon)
+    )
 
     return (
         <main>
-            {weatherData?.map(data => (
-                <p key={data.dt}>{new Date(data.dt * 1000).toLocaleString()}</p>
-            ))}
-
-            {/* <Card>
-                <p>
-                    {DAYS[new Date(weatherDataList![0].dt * 1000).getDay()]},{' '}
-                    {new Date(weatherDataList![0].dt * 1000).getDate()}
-                </p>
-
-                <div className='flex gap-2 text-2xl items-center'>
-                    <div>
-                        {ICONCODES[weatherDataList![0].weather[0].icon].icon}
+            <div className='flex flex-col gap-6'>
+                {weatherDataList.map(arr => (
+                    <div key={JSON.stringify(arr)} className='m-2'>
+                        {arr?.map(data => (
+                            <div key={data.dt}>
+                                <p>
+                                    {new Date(data.dt * 1000).toLocaleString()}
+                                </p>
+                                <p>{data.weather[0].icon}</p>
+                            </div>
+                        ))}
                     </div>
-                    <div className='flex flex-col'>
-                        <span className='font-medium'>
-                            {Math.floor(weatherDataList![0].main.temp_max)}
+                ))}
+                {weatherDataList.map(arr => (
+                    <Card key={arr![0].dt}>
+                        <span>
+                            {DAYS[new Date(arr![0].dt * 1000).getDay()]},{' '}
+                            {new Date(arr![0].dt * 1000).getDate()}
                         </span>
-                        <span className='font-extralight'>
-                            {Math.floor(weatherDataList![0].main.temp_min)}
-                        </span>
-                    </div>
-                </div>
 
-                <p>{weatherDataList![0].weather[0].description}</p>
-                <p>precipitação: {weatherDataList![0].pop * 100}%</p>
-            </Card> */}
+                        <div></div>
+                    </Card>
+                ))}
+            </div>
         </main>
     )
 }

@@ -10,6 +10,7 @@ export interface IWeatherDataRequestParameters {
 export interface IWeatherDataResponse {
     dt: number
     clouds: { all: number }
+    timezone: number
     main: {
         feels_like: number
         humidity: number

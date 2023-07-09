@@ -209,10 +209,20 @@ export default async function CurrentWeatherPage({
                                     </span>
                                     <span>
                                         {new Date(
-                                            weatherData.sys.sunrise * 1000
-                                        ).toLocaleTimeString('pt-BR', {
-                                            timeStyle: 'short',
-                                        })}
+                                            weatherData.sys.sunrise * 1000 +
+                                                weatherData.timezone * 1000
+                                        )
+                                            .getUTCHours()
+                                            .toString()
+                                            .padStart(2, '0')}
+                                        :
+                                        {new Date(
+                                            weatherData.sys.sunrise * 1000 +
+                                                weatherData.timezone * 1000
+                                        )
+                                            .getUTCMinutes()
+                                            .toString()
+                                            .padStart(2, '0')}
                                     </span>
                                 </div>
 
@@ -222,10 +232,20 @@ export default async function CurrentWeatherPage({
                                     </span>
                                     <span>
                                         {new Date(
-                                            weatherData.sys.sunset * 1000
-                                        ).toLocaleTimeString('pt-BR', {
-                                            timeStyle: 'short',
-                                        })}
+                                            weatherData.sys.sunset * 1000 +
+                                                weatherData.timezone * 1000
+                                        )
+                                            .getUTCHours()
+                                            .toString()
+                                            .padStart(2, '0')}
+                                        :
+                                        {new Date(
+                                            weatherData.sys.sunset * 1000 +
+                                                weatherData.timezone * 1000
+                                        )
+                                            .getUTCMinutes()
+                                            .toString()
+                                            .padStart(2, '0')}
                                     </span>
                                 </div>
                             </div>
