@@ -156,9 +156,9 @@ export const WeatherSummaryCard = ({
 
     if (state) {
         if (state.split(' ').length > 1) {
-            stateAcronym = `${state.split(' '[0][0])}${state.split(
-                ' '[1][0]
-            )}`.toUpperCase()
+            stateAcronym = `${state.split(' ')[0][0]}${
+                state.split(' ')[1][0]
+            }`.toUpperCase()
         } else {
             stateAcronym = state.substring(0, 2).toUpperCase()
         }
