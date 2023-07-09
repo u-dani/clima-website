@@ -152,6 +152,18 @@ export const WeatherSummaryCard = ({
     description,
     iconCode,
 }: IWeatherSummaryCardProps) => {
+    let stateAcronym
+
+    if (state) {
+        if (state.split(' ').length > 1) {
+            stateAcronym = `${state.split(' '[0][0])}${state.split(
+                ' '[1][0]
+            )}`.toUpperCase()
+        } else {
+            stateAcronym = state.substring(0, 2).toUpperCase()
+        }
+    }
+
     return (
         <div className='rounded-2xl p-6 border flex items-center justify-between gap-4 w-full overflow-hidden relative text-white lg:w-full lg:h-full'>
             <Image
@@ -161,25 +173,16 @@ export const WeatherSummaryCard = ({
                 style={{ objectFit: 'cover' }}
             />
 
-            <span className='absolute top-0 left-0 bg-black w-screen h-screen opacity-40'></span>
+            <span className='absolute top-0 left-0 bg-black w-full h-full opacity-40'></span>
 
             <div className='flex flex-col gap-6 sm:flex-row sm:justify-between w-full lg:flex-col justify-between h-full lg:gap-10 z-30'>
                 <span className='text-base lg:text-lg max-lg:hidden'>
-                    {`${city}, `}
-                    {state.split(' ').length > 1 ? (
-                        <span className='uppercase'>
-                            {`${state.split(' ')[0][0]}${
-                                state.split(' ')[1][0]
-                            }`}
-                        </span>
-                    ) : (
-                        state.substring(0, 2).toUpperCase()
-                    )}
+                    {`${city}`} {stateAcronym && `, ${stateAcronym}`}
                 </span>
 
                 <div className='flex flex-col gap-6'>
                     <span className='text-base lg:hidden'>
-                        {`${city}, ${state.substring(0, 2).toUpperCase()}`}
+                        {`${city}`} {stateAcronym && `, ${stateAcronym}`}
                     </span>
 
                     <div className='flex flex-col lg:gap-2'>
@@ -205,8 +208,7 @@ export const WeatherSummaryCard = ({
                     <span>{description}</span>
                 </div>
             </div>
-
-            <div className='text-7xl block sm:hidden'>
+            <div className='text-7xl block sm:hidden z-30'>
                 {ICONCODES[iconCode].icon}
             </div>
         </div>
