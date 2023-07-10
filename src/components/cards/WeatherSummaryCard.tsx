@@ -46,12 +46,12 @@ export const ICONCODES: {
     }
 } = {
     '01d': {
-        title: 'Limpo',
+        title: 'Ensolarado',
         image: clearSkyDay,
         icon: <SunIcon />,
     },
     '01n': {
-        title: 'Limpo',
+        title: 'Céu Estrelado',
         image: clearSkyNight,
         icon: <ClearNightIcon />,
     },
