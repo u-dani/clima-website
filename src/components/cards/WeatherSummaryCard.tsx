@@ -177,7 +177,8 @@ export const WeatherSummaryCard = ({
 
             <div className='flex flex-col gap-6 sm:flex-row sm:justify-between w-full lg:flex-col justify-between h-full lg:gap-10 z-30'>
                 <span className='text-base lg:text-lg max-lg:hidden'>
-                    {`${city}`} {stateAcronym && `, ${stateAcronym}`}
+                    {`${city}`}
+                    {stateAcronym && `, ${stateAcronym}`}
                 </span>
 
                 <div className='flex flex-col gap-6'>
