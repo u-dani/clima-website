@@ -44,7 +44,7 @@ interface ILineChartProps {
 
 const Loading = () => {
     return (
-        <div className='flex flex-col items-center h-[400px] justify-center'>
+        <div className='flex flex-col items-center h-[300px] justify-center'>
             <Image src={catSpinning} alt='Gatinho girando' width={100} />
             <span className='text-lg'>Criando gráfico...</span>
         </div>
@@ -57,7 +57,7 @@ export const LineChart = ({ data, options }: ILineChartProps) => {
             <Chart
                 chartType='LineChart'
                 width='100%'
-                height='400px'
+                height='300px'
                 data={data}
                 options={options}
                 loader={<Loading />}
