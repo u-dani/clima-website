@@ -7,6 +7,7 @@ import { DropsIcon } from '@/components/icons/DropsIcon'
 import { LineChart } from '@/components/LineChart'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import Link from 'next/link'
+import { getStateAcronym } from '@/functions/getStateAcronym'
 
 export default async function WeatherForecastPage({
     searchParams,
@@ -162,8 +163,10 @@ export default async function WeatherForecastPage({
                                     <div className='text-xl'>
                                         <DropsIcon />
                                     </div>
-                                    {Math.max(
-                                        ...arr!.map(data => data.pop * 100)
+                                    {Math.floor(
+                                        Math.max(
+                                            ...arr!.map(data => data.pop * 100)
+                                        )
                                     )}
                                     %
                                 </div>
@@ -176,13 +179,8 @@ export default async function WeatherForecastPage({
             <div id='graphic' className='max-w-[800px] flex flex-col gap-6'>
                 <span className='text-xl font-normal tracking-wide'>
                     Temperatura em {geocodingData?.name}
-                    {geocodingData && geocodingData.state.split(' ').length > 1
-                        ? `, ${geocodingData.state.split(' ')[0][0]}${
-                              geocodingData.state.split(' ')[1][0]
-                          }`.toUpperCase()
-                        : `, ${geocodingData?.state
-                              .substring(0, 2)
-                              .toUpperCase()}`}
+                    {geocodingData?.state &&
+                        `, ${getStateAcronym(geocodingData?.state)}`}
                 </span>
                 <LineChart
                     data={lineChartData}
@@ -191,7 +189,9 @@ export default async function WeatherForecastPage({
                             title: 'TEMPO (HORAS)',
                         },
                         vAxis: {
-                            title: 'TEMPERATURA (C)',
+                            title: `TEMPERATURA ${
+                                searchParams.unit === 'imperial' ? '(F)' : '(C)'
+                            }`,
                         },
                         curveType: 'function',
                         backgroundColor: '#f5f5f5',

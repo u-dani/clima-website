@@ -28,8 +28,6 @@ export const requestGeocoding = async ({
 
     if (data[0].state === 'Federal District') {
         data[0].state = 'Distrito Federal'
-    } else if (data[0].state === 'Rio de Janeiro') {
-        data[0].state = 'Rio Janeiro'
     }
 
     return data[0]
