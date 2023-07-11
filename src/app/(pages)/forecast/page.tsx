@@ -8,6 +8,7 @@ import { LineChart } from '@/components/LineChart'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import Link from 'next/link'
 import { getStateAcronym } from '@/functions/getStateAcronym'
+import { Title } from '@/components/Title'
 
 export default async function WeatherForecastPage({
     searchParams,
@@ -79,7 +80,7 @@ export default async function WeatherForecastPage({
     return (
         <main className='flex flex-col gap-10'>
             <header className='flex flex-col gap-6 sm:hidden'>
-                <h1 className='text-2xl tracking-wide'>Próximos Dias</h1>
+                <Title>Próximos Dias</Title>
 
                 <nav>
                     <Link

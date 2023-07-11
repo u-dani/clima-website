@@ -13,6 +13,7 @@ import { ColdThermometerIcon } from '@/components/icons/ColdThermometerIcon'
 import { DoubleCloudIcon } from '@/components/icons/DoubleCloudIcon'
 import { SunriseIcon } from '@/components/icons/SunriseIcon'
 import { SunsetIcon } from '@/components/icons/SunsetIcon'
+import { Title } from '@/components/Title'
 
 export default async function CurrentWeatherPage({
     searchParams,
@@ -69,6 +70,7 @@ export default async function CurrentWeatherPage({
         <main>
             {geocodingData && weatherData ? (
                 <div className='flex flex-col gap-6 mb-6 lg:flex-row lg:gap-8'>
+                    <Title className='sm:hidden'>Clima Atual</Title>
                     <div className='lg:w-1/4'>
                         <WeatherSummaryCard
                             city={geocodingData.name}

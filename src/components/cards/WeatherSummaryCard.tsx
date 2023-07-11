@@ -27,6 +27,7 @@ import { RainNightIcon } from '@/components/icons/RainNightIcon'
 import { ThunderIcon } from '@/components/icons/ThunderIcon'
 import { SnowIcon } from '@/components/icons/SnowIcon'
 import { HazzyIcon } from '@/components/icons/HazzyIcon'
+import { getStateAcronym } from '@/functions/getStateAcronym'
 
 export const DAYS = [
     'Domingo',
@@ -152,18 +153,6 @@ export const WeatherSummaryCard = ({
     description,
     iconCode,
 }: IWeatherSummaryCardProps) => {
-    let stateAcronym
-
-    if (state) {
-        if (state.split(' ').length > 1) {
-            stateAcronym = `${state.split(' ')[0][0]}${
-                state.split(' ')[1][0]
-            }`.toUpperCase()
-        } else {
-            stateAcronym = state.substring(0, 2).toUpperCase()
-        }
-    }
-
     return (
         <div className='rounded-2xl p-6 border flex items-center justify-between gap-4 w-full overflow-hidden relative text-white lg:w-full lg:h-full'>
             <Image
@@ -178,12 +167,12 @@ export const WeatherSummaryCard = ({
             <div className='flex flex-col gap-6 sm:flex-row sm:justify-between w-full lg:flex-col justify-between h-full lg:gap-10 z-30'>
                 <span className='text-base lg:text-lg max-lg:hidden'>
                     {`${city}`}
-                    {stateAcronym && `, ${stateAcronym}`}
+                    {state && `, ${getStateAcronym(state)}`}
                 </span>
 
                 <div className='flex flex-col gap-6'>
                     <span className='text-base lg:hidden'>
-                        {`${city}`} {stateAcronym && `, ${stateAcronym}`}
+                        {`${city}`} {state && `, ${getStateAcronym(state)}`}
                     </span>
 
                     <div className='flex flex-col lg:gap-2'>
