@@ -4,7 +4,7 @@ import {
     IWeatherDataResponse,
 } from './data'
 
-interface IWeatherForecastRequestResponse extends IWeatherDataResponse {
+export interface IWeatherForecastRequestResponse extends IWeatherDataResponse {
     pop: number
 }
 
