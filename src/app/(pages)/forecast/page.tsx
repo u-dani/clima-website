@@ -78,7 +78,7 @@ export default async function WeatherForecastPage({
     })
 
     return (
-        <main className='flex flex-col gap-10'>
+        <main className='flex flex-col gap-12'>
             <header className='flex flex-col gap-6 sm:hidden'>
                 <Title>Próximos Dias</Title>
 
