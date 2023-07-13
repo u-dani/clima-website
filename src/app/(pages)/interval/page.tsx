@@ -90,14 +90,52 @@ export default async function WeatherForecastWithIntervalsPage({
                             className='max-sm:hidden'>
                             {arr?.map(data => (
                                 <div key={data.dt}>
-                                    <DetailedWeatherCard {...data} />
+                                    <DetailedWeatherCard
+                                        clouds={data.clouds.all}
+                                        dt={data.dt}
+                                        feels_like={
+                                            searchParams.unit === 'imperial'
+                                                ? data.main.feels_like * 1.8 +
+                                                  32
+                                                : data.main.feels_like
+                                        }
+                                        humidity={data.main.humidity}
+                                        iconWeather={data.weather[0].icon}
+                                        pressure={data.main.pressure}
+                                        temp={
+                                            searchParams.unit === 'imperial'
+                                                ? data.main.temp * 1.8 + 32
+                                                : data.main.temp
+                                        }
+                                        windSpeed={data.wind.speed}
+                                        pop={data.pop}
+                                    />
                                 </div>
                             ))}
                         </CardSlides>
 
                         <div className='flex flex-col gap-4 sm:hidden sm:gap-6 sm:flex-row'>
                             {arr?.map(data => (
-                                <DetailedWeatherCard key={data.dt} {...data} />
+                                <DetailedWeatherCard
+                                    key={data.dt}
+                                    clouds={data.clouds.all}
+                                    dt={data.dt}
+                                    feels_like={
+                                        searchParams.unit === 'imperial'
+                                            ? data.main.feels_like * 1.8 + 32
+                                            : data.main.feels_like
+                                    }
+                                    humidity={data.main.humidity}
+                                    iconWeather={data.weather[0].icon}
+                                    pressure={data.main.pressure}
+                                    temp={
+                                        searchParams.unit === 'imperial'
+                                            ? data.main.temp * 1.8 + 32
+                                            : data.main.temp
+                                    }
+                                    windSpeed={data.wind.speed}
+                                    pop={data.pop}
+                                />
                             ))}
                         </div>
                     </section>
