@@ -25,7 +25,7 @@ export const DetailedWeatherCard = ({
 
     return (
         <div onClick={() => setShow(state => !state)}>
-            <Card className='flex flex-col gap-6 tracking-wide pb-5 cursor-pointer sm:w-[320px]'>
+            <Card className='flex flex-col gap-6 tracking-wide pb-5 cursor-pointer'>
                 <div className='flex tracking-wider justify-between items-center'>
                     <span>
                         {new Date(dt * 1000).toLocaleTimeString('pt-br', {
