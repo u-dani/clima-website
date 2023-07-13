@@ -1,4 +1,5 @@
 import { CardSlides } from '@/components/CardSlides'
+import { Title } from '@/components/Title'
 import { DetailedWeatherCard } from '@/components/cards/DetailedWeatherCard'
 import { DAYS } from '@/components/cards/WeatherSummaryCard'
 import { requestGeocoding } from '@/request/requestGeocoding'
@@ -45,53 +46,63 @@ export default async function WeatherForecastWithIntervalsPage({
     weatherDataList.push(arr)
 
     return (
-        <main className='flex flex-col gap-10'>
-            <nav className='flex gap-4 sm:px-4'>
+        <main className='flex flex-col'>
+            <div className='flex flex-col gap-6'>
+                <Title className='sm:px-4'>
+                    Clima de{' '}
+                    <span className='capitalize'>{searchParams.city}</span>
+                    <span className='sm:hidden'>, Intervalo</span>
+                </Title>
+
+                <nav className='flex gap-4 sm:px-4'>
+                    {weatherDataList.map(arr => (
+                        <Link
+                            key={arr![0].dt}
+                            href={`#${arr![0].dt.toString()}`}
+                            className='rounded-lg bg-secondary-light dark:bg-secondary-dark px-4 py-2 truncate'>
+                            <span className='truncate tracking-wide'>
+                                {`${DAYS[
+                                    new Date(arr![0].dt * 1000).getDay()
+                                ].substring(0, 3)}, ${new Date(
+                                    arr![0].dt * 1000
+                                ).getDate()}`}
+                            </span>
+                        </Link>
+                    ))}
+                </nav>
+            </div>
+
+            <div className='flex flex-col gap-10'>
                 {weatherDataList.map(arr => (
-                    <Link
-                        key={arr![0].dt}
-                        href={`#${arr![0].dt.toString()}`}
-                        className='rounded-lg bg-secondary-light dark:bg-secondary-dark px-4 py-2 truncate'>
-                        <span className='truncate tracking-wide'>
-                            {`${DAYS[
-                                new Date(arr![0].dt * 1000).getDay()
-                            ].substring(0, 3)}, ${new Date(
-                                arr![0].dt * 1000
-                            ).getDate()}`}
-                        </span>
-                    </Link>
+                    <section
+                        id={arr![0].dt.toString()}
+                        key={JSON.stringify(arr)}
+                        className='flex flex-col gap-10 pt-10'>
+                        <header className='sm:px-4'>
+                            <h2 className='text-2xl tracking-wide sm:px-6 px-4 py-px border-l-4 border-primary-light dark:border-primary-dark'>
+                                {DAYS[new Date(arr![0].dt * 1000).getDay()]},{' '}
+                                {new Date(arr![0].dt * 1000).getDate()}
+                            </h2>
+                        </header>
+
+                        <CardSlides
+                            id={new Date(arr![0].dt * 1000).getDate()}
+                            className='max-sm:hidden'>
+                            {arr?.map(data => (
+                                <div key={data.dt}>
+                                    <DetailedWeatherCard {...data} />
+                                </div>
+                            ))}
+                        </CardSlides>
+
+                        <div className='flex flex-col gap-4 sm:hidden sm:gap-6 sm:flex-row'>
+                            {arr?.map(data => (
+                                <DetailedWeatherCard key={data.dt} {...data} />
+                            ))}
+                        </div>
+                    </section>
                 ))}
-            </nav>
-
-            {weatherDataList.map(arr => (
-                <section
-                    id={arr![0].dt.toString()}
-                    key={JSON.stringify(arr)}
-                    className='flex flex-col gap-10 pt-10'>
-                    <header className='sm:px-4'>
-                        <h2 className='text-2xl tracking-wide sm:px-6 px-4 py-px border-l-4 border-primary-light dark:border-primary-dark'>
-                            {DAYS[new Date(arr![0].dt * 1000).getDay()]},{' '}
-                            {new Date(arr![0].dt * 1000).getDate()}
-                        </h2>
-                    </header>
-
-                    <CardSlides
-                        id={new Date(arr![0].dt * 1000).getDate()}
-                        className='max-sm:hidden'>
-                        {arr?.map(data => (
-                            <div key={data.dt}>
-                                <DetailedWeatherCard {...data} />
-                            </div>
-                        ))}
-                    </CardSlides>
-
-                    <div className='flex flex-col gap-4 sm:hidden sm:gap-6 sm:flex-row'>
-                        {arr?.map(data => (
-                            <DetailedWeatherCard key={data.dt} {...data} />
-                        ))}
-                    </div>
-                </section>
-            ))}
+            </div>
         </main>
     )
 }
