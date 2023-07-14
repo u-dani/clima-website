@@ -11,7 +11,8 @@ export const requestCurrentWeather = async ({
     lang = 'pt_br',
 }: IWeatherDataRequestParameters): Promise<IWeatherDataResponse> => {
     const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&lang=${lang}&appid=${APIKEY}`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&lang=${lang}&appid=${APIKEY}`,
+        { cache: 'no-cache' }
     )
 
     const data = await res.json()
