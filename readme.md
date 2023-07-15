@@ -6,14 +6,15 @@ Os dados meteorológicos são das API’s [Current Weather Data](https://openwea
 
 ## 🌠 Demo
 
-<a target="_blank" href="https://clima-website.vercel.app/">https://clima-website.vercel.app/</a>
+<a target="_blank" href="https://clima-website.vercel.app/">https://clima-website.vercel.app/</a> <br>
+(a qualidade das imagens não está das melhores, desculpa 😔)
 
-<div align="center">
+<img src='public/demo/current-desktop-light.jpg' /> 
 
-![](public/demo/current-desktop-light.jpg)
-![](public/demo/forecast-tablet-light.jpg)
-![](public/demo/interval-mobile-dark.jpg)
-
+<div>
+<img src='public/demo/forecast-tablet-light.jpg' height='600px' /> 
+&ensp;&ensp;
+<img src='public/demo/interval-mobile-dark.jpg' height='600px' /> 
 </div>
 
 ## 🛠 Tecnologias usadas
