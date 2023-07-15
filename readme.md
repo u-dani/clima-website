@@ -11,11 +11,10 @@ Os dados meteorológicos são das API’s [Current Weather Data](https://openwea
 <div align="center">
 
 ![](public/demo/current-desktop-light.jpg)
-![](public/demo/forecast-desktop-dark.jpg)
+![](public/demo/forecast-tablet-light.jpg)
+![](public/demo/interval-mobile-dark.jpg)
 
 </div>
-
-![](public/demo/forecast-tablet-light.jpg)
 
 ## 🛠 Tecnologias usadas
 
