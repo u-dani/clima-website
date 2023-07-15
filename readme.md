@@ -11,6 +11,7 @@ Os dados meteorológicos são das API’s [Current Weather Data](https://openwea
 <div align="center">
 
 ![](public/demo/current-desktop-light.jpg)
+![](public/demo/forecast-desktop-dark.jpg)
 
 </div>
 
