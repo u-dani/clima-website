@@ -8,13 +8,13 @@ Os dados meteorológicos são das API’s [Current Weather Data](https://openwea
 
 <a target="_blank" href="https://clima-website.vercel.app/">https://clima-website.vercel.app/</a>
 
-![](public/demo/current-weather-dark-theme.jpg)
+<div align="center">
 
-![](public/demo/interval-page-dark-theme.jpg)
+![](public/demo/current-desktop-light.jpg)
 
-![](public/demo/current-weather-dark-theme-mobile.jpg)
+</div>
 
-![](public/demo/forecast-weather-light-theme-mobile.jpg)
+![](public/demo/forecast-tablet-light.jpg)
 
 ## 🛠 Tecnologias usadas
 
