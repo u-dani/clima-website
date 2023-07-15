@@ -10,9 +10,8 @@ Os dados meteorológicos são das API’s [Current Weather Data](https://openwea
 
 <div align="center">
 
-![](public/demo/current-desktop-light.jpg)
-![](public/demo/forecast-desktop-dark.jpg)
-
+<img src='public/demo/current-desktop-light.jpg' width='50%'/>
+<img src='public/demo/current-desktop-light.jpg' width='50%'/>
 </div>
 
 ![](public/demo/forecast-tablet-light.jpg)
