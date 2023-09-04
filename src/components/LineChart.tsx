@@ -1,6 +1,6 @@
 'use client'
 import { Chart } from 'react-google-charts'
-import catSpinning from 'public/cats/cat-spinning.gif'
+import catSpinning from 'public/cat-spinning.gif'
 import Image from 'next/image'
 
 // Exemplos de entrada. Mais exemplos em https://www.react-google-charts.com/examples/line-chart
