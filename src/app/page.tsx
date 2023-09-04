@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import catSpinning from 'public/cats/cat-spinning.gif'
+import catSpinning from 'public/cat-spinning.gif'
 import { useRouter } from 'next/navigation'
 import { requestCityName } from '@/request/requestCityName'
 import { useEffect } from 'react'
