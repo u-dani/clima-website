@@ -7,7 +7,6 @@ Os dados meteorológicos são das API’s [Current Weather Data](https://openwea
 ## 🌠 Demo
 
 <a target="_blank" href="https://clima-website.vercel.app/">https://clima-website.vercel.app/</a> <br>
-(a qualidade das imagens não está das melhores, desculpa 😔)
 
 <img src='public/demo/current-desktop-light.jpg' /> 
 
