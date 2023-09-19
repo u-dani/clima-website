@@ -1,63 +1,33 @@
 'use client'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
+import catSpinning from 'public/cats/cat-spinning.gif'
 import { useRouter } from 'next/navigation'
 import { requestCityName } from '@/request/requestCityName'
-import { useEffect, useState } from 'react'
-
-import catPlease from 'public/cats/cat-please.gif'
-import catHappy from 'public/cats/cat-happy.gif'
-import catSad from 'public/cats/cat-sad.gif'
-
-const CATS: {
-    [key: string]: { title: string; gif: StaticImageData; alt: string }
-} = {
-    please: {
-        title: 'Permitirias a localização???',
-        gif: catPlease,
-        alt: 'Gato pedindo por favor',
-    },
-    happy: {
-        title: '... Buscando sua cidade ^^',
-        gif: catHappy,
-        alt: 'Gato feliz',
-    },
-    sad: {
-        title: '... Redirecionando :(',
-        gif: catSad,
-        alt: 'Gato triste',
-    },
-}
+import { useEffect } from 'react'
 
 export default function Home() {
-    const { push } = useRouter()
-    const [content, setContent] = useState(CATS.please)
+  const { push } = useRouter()
 
-    useEffect(() => {
-        navigator.geolocation.getCurrentPosition(
-            async position => {
-                setContent(CATS.happy)
-                const cityName = await requestCityName({
-                    lat: position.coords.latitude,
-                    lon: position.coords.longitude,
-                })
-                push(`current?city=${cityName}`)
-            },
-            () => {
-                setContent(CATS.sad)
-                push(`current?`)
-            }
-        )
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-    return (
-        <main className='bg-dark-gray w-screen h-screen flex flex-col justify-center items-center text-white gap-4 text-center'>
-            <div className='w-[200px]'>
-                <Image src={content.gif} alt={content.alt} />
-            </div>
-
-            <span className='font-medium text-2xl tracking-wider'>
-                {content.title}
-            </span>
-        </main>
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      async position => {
+        const cityName = await requestCityName({
+          lat: position.coords.latitude,
+          lon: position.coords.longitude,
+        })
+        push(`current?city=${cityName}`)
+      },
+      () => {
+        console.log('Não foi possivel encontrar a sua localização atual.')
+        push(`current?`)
+      },
     )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  return (
+    <main className='flex h-screen w-screen flex-col items-center justify-center gap-4 bg-dark-gray text-center text-white'>
+      <Image src={catSpinning} alt='Carregando' width={80} height={80} />
+      Buscando sua localização
+    </main>
+  )
 }
